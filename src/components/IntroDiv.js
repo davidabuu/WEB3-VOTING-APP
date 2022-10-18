@@ -9,7 +9,7 @@ const IntroDiv = () => {
         <p>Client Sourced</p>
         <p>Marketing</p>
         </div>
-        <p className="business">Business Marketing Reinvented. Don't pay for</p>
+        <p className="business">Business Marketing Reinvented. Don&apos;t pay for</p>
         <p className="business">marketing get paid by marketing</p>
         <br></br>
         <div className="btn">
