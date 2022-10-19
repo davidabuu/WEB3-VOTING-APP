@@ -3,7 +3,7 @@ const UserWebLayout = ({ webtitle, children }) => {
   return (
     <>
       <Head>
-        <title>{webtitle} | Atovis</title>
+        <title>{webtitle} | Zamp</title>
       </Head>
       {children}
     </>
