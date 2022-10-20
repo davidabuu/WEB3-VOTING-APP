@@ -1,14 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../src/components/Header'
-import IntroDiv from '../src/components/IntroDiv'
-import styles from '../styles/Home.module.css'
+
+import Header from "../src/components/Header";
+import IntroDiv from "../src/components/IntroDiv";
+import UserWebLayout from "../src/components/UserWebLayout";
 
 export default function Home() {
   return (
-  <div style={{backgroundColor:'#000'}}>
-    <Header/>
-    <IntroDiv/>
-  </div>
-  )
+    <UserWebLayout webtitle="Home Page">
+      <div style={{ backgroundColor: "#000" , minHeight:'100vh'}}>
+        <Header />
+        <IntroDiv />
+      </div>
+    </UserWebLayout>
+  );
 }
