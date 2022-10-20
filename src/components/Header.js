@@ -15,7 +15,7 @@ const Header = () => {
         <ul className="desktop-nav">
           <Link href="/dashboard">
             <a>
-              <li>DashBoard</li>
+              <li>Dashboard</li>
             </a>
           </Link>
           <li>About</li>
