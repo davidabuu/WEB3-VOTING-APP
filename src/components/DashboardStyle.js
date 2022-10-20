@@ -28,6 +28,11 @@ export const DashBoardStyle = styled.div`
     flex-direction: column;
     margin: 50px 1.5rem;
     .div-one {
+      width: 80%;
+    }
+  }
+  @media (max-width: 600px) {
+    .div-one {
       width: 100%;
     }
   }

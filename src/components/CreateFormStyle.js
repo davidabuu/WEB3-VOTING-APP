@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const CreateFormStyled = styled.div`
   background: #333;
-  
   padding: 20px;
   color: #fff;
   border-radius: 10px;
@@ -25,8 +24,17 @@ export const CreateFormStyled = styled.div`
     color: #000;
     border: none;
     font-size: 14px;
-    font-weight:bold;
+    font-weight: bold;
     border-radius: 5px;
     margin-bottom: 10px;
+  }
+  @media (max-width: 600px) {
+    width:100%;
+    form {
+      flex-direction: column;
+    }
+    .tree {
+      margin-left: 0px !important;
+    }
   }
 `;
