@@ -6,10 +6,12 @@ const IntroDiv = () => {
     <IntroStyle>
       <div>
         <div className="text">
-        <p>Client Sourced</p>
-        <p className="marketing">Marketing</p>
+          <p>Client Sourced</p>
+          <p className="marketing">Marketing</p>
         </div>
-        <p className="business">Business Marketing Reinvented. Don&apos;t pay for</p>
+        <p className="business">
+          Business Marketing Reinvented. Don&apos;t pay for
+        </p>
         <p className="business">marketing get paid by marketing</p>
         <br></br>
         <div className="btn">

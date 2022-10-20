@@ -151,6 +151,11 @@ export const IntroStyle = styled.div`
   .mint:hover {
     cursor: pointer;
   }
+  @media(max-width:1000px){
+    img {
+      width: 400px;
+    }
+  }
   @media (max-width: 900px) {
     flex-direction: column;
     .text {
@@ -164,7 +169,7 @@ export const IntroStyle = styled.div`
     }
   }
   @media (max-width: 600px) {
-    padding: 0px 15px;
+    padding: 0px  9px;
     .mint {
       margin-top: 10px;
     }

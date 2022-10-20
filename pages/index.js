@@ -6,7 +6,7 @@ import UserWebLayout from "../src/components/UserWebLayout";
 export default function Home() {
   return (
     <UserWebLayout webtitle="Home Page">
-      <div style={{ backgroundColor: "#000" }}>
+      <div style={{ backgroundColor: "#000" , minHeight:'100vh'}}>
         <Header />
         <IntroDiv />
       </div>
