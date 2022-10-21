@@ -131,7 +131,8 @@ export const IntroStyle = styled.div`
     color: #000;
     font-size: 15px;
     padding: 10px 10px;
-    width: 200px;
+    margin-right: 8px;
+    width: 150px;
     border-radius: 25px;
   }
   .learn:hover {
@@ -142,7 +143,8 @@ export const IntroStyle = styled.div`
     color: var(--primary-color);
     font-size: 15px;
     padding: 10px 10px;
-    width: 200px;
+    margin-left: 8px;
+    width: 150px;
     border-radius: 25px;
   }
   .marketing {
