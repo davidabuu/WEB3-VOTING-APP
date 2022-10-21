@@ -4,9 +4,15 @@ import { CreateFormStyled } from "./components/CreateFormStyle";
 const CreateForm = () => {
   return (
     <CreateFormStyled>
-      <form>
+      <form
+      >
         <div>
-          <div>
+          <div
+          style={{
+            height: "100%",
+            paddingTop: '48px'
+          }}
+          >
             <label>Business Card Name</label>
             <Input type="text" placeholder="Business Card Name" />
           </div>
