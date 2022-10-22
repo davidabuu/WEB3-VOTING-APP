@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const CreateFormStyled = styled.div`
   background: #333;
-  padding: 20px;
+  padding: 10px;
   color: #fff;
   border-radius: 10px;
+  height: 400px;
   input,
   textarea {
     background-color: #e2e1e5;
