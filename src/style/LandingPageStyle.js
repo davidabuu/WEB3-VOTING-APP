@@ -24,7 +24,7 @@ export const HeaderStyle = styled.div`
   h2 {
     color: #fff;
   }
-  .collect-btn {
+  .connect-btn {
     background: var(--primary-color);
     color: #000;
     box-shadow: 0 2px 0px 2px #0000058;
@@ -36,7 +36,7 @@ export const HeaderStyle = styled.div`
     color: var(--primary-color);
     cursor: pointer;
   }
-  .collect-btn:hover {
+  .connect-btn:hover {
     background: #333;
     color: #fff;
   }
@@ -151,7 +151,7 @@ export const IntroStyle = styled.div`
   .mint:hover {
     cursor: pointer;
   }
-  @media(max-width:1000px){
+  @media (max-width: 1000px) {
     img {
       width: 400px;
     }
@@ -169,7 +169,7 @@ export const IntroStyle = styled.div`
     }
   }
   @media (max-width: 600px) {
-    padding: 0px  9px;
+    padding: 0px 9px;
     .mint {
       margin-top: 10px;
     }
