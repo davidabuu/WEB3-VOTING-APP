@@ -1,15 +1,13 @@
 
-import Header from "../src/components/Header";
-import IntroDiv from "../src/components/IntroDiv";
-import UserWebLayout from "../src/components/UserWebLayout";
+import LandingPage from "../components/LandingPage"
+import UserWebLayout from "../components/UserWebLayout"
 
 export default function Home() {
-  return (
-    <UserWebLayout webtitle="Home Page">
-      <div style={{ backgroundColor: "#000" , minHeight:'100vh'}}>
-        <Header />
-        <IntroDiv />
-      </div>
-    </UserWebLayout>
-  );
+    return (
+        <div>
+            <UserWebLayout webtitle="Landing Page">
+                <LandingPage/>
+            </UserWebLayout>
+        </div>
+    )
 }
