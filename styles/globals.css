@@ -15,6 +15,19 @@ p{
   margin: 0 !important;
 
 }
+.vote-info{
+    margin: 10px 3rem;
+    font-weight: bold;
+    font-size: 30px;
+}
+.vote-card{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    justify-content: space-around;
+    margin: 0 3rem;
+    border-radius: 20px;
+}
 :root {
     --primary-color: #00AB66;
     --button-color: #4cc5d2;
@@ -40,7 +53,6 @@ p{
     display: flex;
     font-size: 16px;
     height: 100%;
-    background-color: #1b5958;
     justify-content: center;
     margin: 0;
     padding: 0;
@@ -89,6 +101,9 @@ h2 {
     .input-flex {
         width: 0;
         justify-content: center;
+        flex-direction: column;
+    }
+    .vote-card{
         flex-direction: column;
     }
     

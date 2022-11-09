@@ -1,4 +1,3 @@
-
 import LandingPage from "../components/LandingPage"
 import UserWebLayout from "../components/UserWebLayout"
 

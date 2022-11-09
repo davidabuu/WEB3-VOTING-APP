@@ -1,12 +1,21 @@
-import React from "react";
-import DashBoard from "../src/components/DashBoard";
+// import React from "react";
+// import DashBoard from "../src/components/DashBoard";
 
-const UserDashboard = () => {
+// const UserDashboard = () => {
+//   return (
+//     <div style={{ backgroundColor: "#000", minHeight: "100vh" }}>
+//       <DashBoard />
+//     </div>
+//   );
+// };
+
+// export default UserDashboard;
+import React from 'react'
+
+const dashboard = () => {
   return (
-    <div style={{ backgroundColor: "#000", minHeight: "100vh" }}>
-      <DashBoard />
-    </div>
-  );
-};
+    <div>dashboard</div>
+  )
+}
 
-export default UserDashboard;
+export default dashboard

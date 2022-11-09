@@ -8,7 +8,7 @@ const AddCandidate = () => {
         alert("Hola")
     }
     return (
-        <div style={{ backgroundColor: "#1b5958", minHeight: "100vh" }}>
+        <div style={{ backgroundColor: "#f4f4f4", minHeight: "100vh" }}>
             <UserWebLayout webtitle="Add Candidate">
                 <div className="form">
                 <form onSubmit={RegisterCandidate}>
