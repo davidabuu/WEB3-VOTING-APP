@@ -17,6 +17,12 @@ const AddCandidates = () => {
   const { s_fullName, s_department, s_matricNumber, image, s_voteCount } = data;
   const gameAddress =
     chainId in contractAddress ? contractAddress[chainId][0] : null;
+
+  const onChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+    console.log(s_fullName, s_department, s_matricNumber, s_voteCount, image);
+  };
+  const [myrole, setRole] = useState("");
   const {
     runContractFunction: registerCandidate,
     isFetching,
@@ -34,12 +40,6 @@ const AddCandidates = () => {
       s_role: myrole,
     },
   });
-
-  const onChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-    console.log(s_fullName, s_department, s_matricNumber, s_voteCount, image);
-  };
-  const [myrole, setRole] = useState("");
   const addANewCandidate = async (e) => {
     setLoading(true);
     e.preventDefault();
