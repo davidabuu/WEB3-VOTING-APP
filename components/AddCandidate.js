@@ -8,19 +8,19 @@ const AddCandidates = () => {
   const [loading, setLoading] = useState(false);
   const chainId = parseInt(chainIdHex);
   const [data, setData] = useState({
-    s_fullName: "",
-    s_department: "",
-    s_matricNumber: "",
+    fullName: "",
+    department: "",
+    matricNumber: "",
     image: "",
-    s_voteCount: 0,
+    voteCount: 0,
   });
-  const { s_fullName, s_department, s_matricNumber, image, s_voteCount } = data;
-  const gameAddress =
+  const { fullName, department, matricNumber, image, voteCount } = data;
+  const votingContractAddress =
     chainId in contractAddress ? contractAddress[chainId][0] : null;
 
   const onChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(s_fullName, s_department, s_matricNumber, s_voteCount, image);
+    console.log(fullName, department, matricNumber, voteCount, image);
   };
   const [myrole, setRole] = useState("");
   const {
@@ -29,25 +29,31 @@ const AddCandidates = () => {
     isLoading,
   } = useWeb3Contract({
     abi,
-    contractAddress: gameAddress,
+    contractAddress: votingContractAddress,
     functionName: "addCandidates",
     params: {
-      s_fullName,
-      s_department,
-      s_matricNumber,
+      fullName,
+      department,
+      matricNumber,
       image,
-      s_voteCount,
-      s_role: myrole,
+      voteCount,
+      role: myrole,
     },
   });
   const addANewCandidate = async (e) => {
-    setLoading(true);
-    e.preventDefault();
-    await registerCandidate();
-    notification.open({
-      description: "Please wait while metemask completes the transaction",
-    });
-    setLoading(false);
+    if (isWeb3Enabled) {
+      setLoading(true);
+      e.preventDefault();
+      const data = await registerCandidate();
+      setLoading(false);
+      notification.info({
+        description: "Please wait while Metamask completes the transaction",
+      });
+    } else {
+      notification.error({
+        description: "Please connect to your wallet",
+      });
+    }
   };
   const handleChange = (event) => {
     setRole(event.target.value);
@@ -69,8 +75,8 @@ const AddCandidates = () => {
                   type="text"
                   placeholder="Enter FullName"
                   onChange={onChange}
-                  value={s_fullName}
-                  name="s_fullName"
+                  value={fullName}
+                  name="fullName"
                 />
               </div>
               <div>
@@ -81,8 +87,8 @@ const AddCandidates = () => {
                   type="text"
                   placeholder="Enter Departmemt"
                   onChange={onChange}
-                  value={s_department}
-                  name="s_department"
+                  value={department}
+                  name="department"
                 />
               </div>
             </div>
@@ -94,8 +100,8 @@ const AddCandidates = () => {
                   type="text"
                   placeholder="Enter Matric Number"
                   onChange={onChange}
-                  value={s_matricNumber}
-                  name="s_matricNumber"
+                  value={matricNumber}
+                  name="matricNumber"
                   required
                 />
               </div>
@@ -107,6 +113,7 @@ const AddCandidates = () => {
                   placeholder="Enter Image URL"
                   onChange={onChange}
                   value={image}
+                  name="image"
                 />
               </div>
             </div>
@@ -117,8 +124,8 @@ const AddCandidates = () => {
                 <Input
                   type="number"
                   disabled
-                  name="s_voteCount"
-                  value={s_voteCount}
+                  name="voteCount"
+                  value={voteCount}
                 />
               </div>
               <div>
@@ -137,11 +144,7 @@ const AddCandidates = () => {
             </div>
             <br></br>
             <div>
-              <Button
-                className="btn-sign"
-                loading={loading || isFetching || isLoading}
-                htmlType="submit"
-              >
+              <Button className="btn-sign" loading={loading} htmlType="submit">
                 REGISTER
               </Button>
             </div>
