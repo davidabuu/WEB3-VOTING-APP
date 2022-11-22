@@ -4,23 +4,35 @@ import { VoteCardStyled } from "./VoteCardStyle";
 import { abi, contractAddress } from "../src/constants";
 import Image from "next/image";
 import { useMoralis, useWeb3Contract } from "react-moralis";
-const VoteCard = ({ role, matricNumber, department }) => {
-  const { chainId: chainIdHex, isWeb3Enabled } = useMoralis();
-  const [loading, setLoading] = useState(false);
+const VoteCardForPresident = ({
+  role,
+  matricNumber,
+  functionName,
+  department,
+  voteCount,
+  fullName,
+  index,
+}) => {
+  const { chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex);
   const votingContractAddress =
     chainId in contractAddress ? contractAddress[chainId][0] : null;
   const {
-    runContractFunction: vote,
+    runContractFunction: voteForPresident,
     isFetching,
     isLoading,
   } = useWeb3Contract({
     abi,
     contractAddress: votingContractAddress,
-    functionName: "vote",
+    functionName,
+    params: {
+      index,
+    },
   });
-  const Vote = async () => {
-    await vote();
+  const presidentVote = async () => {
+    const vote = await voteForPresident();
+    console.log(vote);
+    // await vote();
   };
   return (
     <VoteCardStyled>
@@ -33,10 +45,11 @@ const VoteCard = ({ role, matricNumber, department }) => {
           alt="Abu Codes"
           className="vote-img"
         />
+        <p>FullName: {fullName}</p>
         <p>Matric No: {matricNumber}</p>
         <p>Department: {department}</p>
-        <p>Vote Count: 0</p>
-        <div onClick={Vote}>
+        <p>Vote Count: {voteCount}</p>
+        <div onClick={presidentVote}>
           <Button className="vote-btn">VOTE</Button>
         </div>
       </div>
@@ -44,4 +57,4 @@ const VoteCard = ({ role, matricNumber, department }) => {
   );
 };
 
-export default VoteCard;
+export default VoteCardForPresident;

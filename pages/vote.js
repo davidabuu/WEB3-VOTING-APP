@@ -9,6 +9,7 @@ import VoteCard from "../components/VoteCard";
 import { useMoralis, useWeb3Contract } from "react-moralis";
 const Vote = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ss, ttt] = useState("");
   const { chainId: chainIdHex, isWeb3Enabled } = useMoralis();
   const [loading, setLoading] = useState(false);
   const chainId = parseInt(chainIdHex);
@@ -35,17 +36,16 @@ const Vote = () => {
     contractAddress: votingContractAddress,
     functionName: "getAllCandidate",
   });
-  async function updateUi (){
+  async function updateUi() {
     const candidates = await getAllCandidates();
     setData(candidates);
-    console.log(datass);
   }
+  console.log(ss);
   useEffect(() => {
-    if(isWeb3Enabled){
-      updateUi()
+    if (isWeb3Enabled) {
+      updateUi();
     }
   }, [isWeb3Enabled]);
-  console.log(datass);
   return (
     <UserWebLayout webtitle="VOTE" data-aos="zoom-in">
       <div style={{ background: "#f4f4f4", minHeight: "100vh" }}>
@@ -68,68 +68,74 @@ const Vote = () => {
           <p>You can only Vote Once</p>
         </div>
         <div>
-          {
-            /* {isLoading ? <div>loading...</div> : <div>{data[0][0]}</div>} */
-            !votingContractAddress ? (
-              <div>loading</div>
-            ) : (
+          {isLoading ? (
+            <div>loading</div>
+          ) : (
+            <div>
               <div className="vote-card">
-                <VoteCard
-                  role="President"
-                  matricNumber="18/ENG02/003"
-                  department={datass[0][0]}
-                />
-
-                <VoteCard
-                  role="President"
-                  matricNumber="18/ENG02/003"
-                  department="Computer Enginering"
-                />
-                <VoteCard
-                  role="President"
-                  matricNumber="18/ENG02/003"
-                  department="Computer Enginering"
-                />
+                {datass.map((item, index) => {
+                  if (item[5] == "President") {
+                    return (
+                      <div key={index}>
+                        <VoteCard
+                          role={item[5]}
+                          matricNumber={item[2]}
+                          department={item[1]}
+                          fullName={item[0]}
+                          voteCount={(item[4] || "").toString()}
+                          index={index}
+                          functionName="voteForPresident"
+                        />
+                        {}
+                      </div>
+                    );
+                  }
+                })}
               </div>
-            )
-          }
+              <div className="vote-card">
+                {datass.map((item, index) => {
+                  if (item[5] == "Vice President") {
+                    return (
+                      <div key={index}>
+                        <VoteCard
+                          role={item[5]}
+                          matricNumber={item[2]}
+                          department={item[1]}
+                          fullName={item[0]}
+                          voteCount={(item[4] || "").toString()}
+                          index={index}
+                          functionName="voteForVicePresident"
+                        />
+                        {console.log(index)}
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+              <div className="vote-card">
+                {datass.map((item, index) => {
+                  if (item[5] == "General Secretary") {
+                    return (
+                      <div key={index}>
+                        <VoteCard
+                          role={item[5]}
+                          matricNumber={item[2]}
+                          department={item[1]}
+                          fullName={item[0]}
+                          voteCount={(item[4] || "").toString()}
+                          index={index}
+                          functionName="voteForSecretary"
+                        />
+                        {}
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+            </div>
+          )}
         </div>
         <br></br>
-        <div className="vote-card">
-          <VoteCard
-            role="Vice President"
-            matricNumber="18/ENG02/003"
-            department="Computer Enginering"
-          />
-          <VoteCard
-            role="Vice President"
-            matricNumber="18/ENG02/003"
-            department="Computer Enginering"
-          />
-          <VoteCard
-            role="Vice President"
-            matricNumber="18/ENG02/003"
-            department="Computer Enginering"
-          />
-        </div>
-        <br></br>
-        <div className="vote-card">
-          <VoteCard
-            role="Secretary"
-            matricNumber="18/ENG02/001"
-            department="Chemical Enginering"
-          />
-          <VoteCard
-            role="Secretary"
-            matricNumber="18/ENG02/001"
-            department="Civil Enginering"
-          />
-          <VoteCard
-            role="Secretary"
-            matricNumber="18/ENG02/001"
-            department="Civil Enginering"
-          />
-        </div>
       </div>
     </UserWebLayout>
   );

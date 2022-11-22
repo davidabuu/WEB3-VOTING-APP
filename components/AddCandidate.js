@@ -45,6 +45,7 @@ const AddCandidates = () => {
       setLoading(true);
       e.preventDefault();
       const data = await registerCandidate();
+      console.log(data)
       setLoading(false);
       notification.info({
         description: "Please wait while Metamask completes the transaction",
@@ -137,6 +138,7 @@ const AddCandidates = () => {
                   value={myrole}
                 >
                   <option>Select Role</option>
+                  <option>President</option>
                   <option>Vice President</option>
                   <option>General Secretary</option>
                 </select>
